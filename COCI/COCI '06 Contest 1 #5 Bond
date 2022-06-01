@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+ 
+#define ll long
+
+#define all(x) x.begin(), x.end()
+#define scan(x) do{while((x=getchar())<'0'); for(x-='0'; '0'<=(_=getchar()); x=(x<<3)+(x<<1)+_-'0');}while(0)
+char _;
+
+int n;
+double v[22][22], dp[1<<20];
+double calc (int bond, int mask){
+	if (dp[mask] >= 0) return dp[mask];
+
+	if (bond >= n) return 1;
+
+	double returner = 0.0;
+
+	for (int k = 0; k<n; ++k){
+		if ((mask & (1<<k)) == 0) returner = max(returner, v[bond][k] * calc(bond + 1, mask|(1 << k)));
+	}
+	return dp[mask] = returner;
+}
+
+void solve(){
+	cin >> n;
+	
+
+  fill(dp, dp+(1<<20), -1.0);
+
+	for (int i = 0; i<n; ++i){
+		for (int j = 0; j<n; ++j){
+			cin >> v[i][j];
+			v[i][j] /= 100.0;
+		}
+	}
+	printf("%.6f\n", calc(0, 0)*100.0);
+}
+
+int main(){
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+
+
+    int testcases = 1;
+	//cin >> testcases; 
+	for (int number_of_total_test_cases = 1; number_of_total_test_cases <= testcases; ++number_of_total_test_cases){ 
+    
+
+
+    //Google
+    //cout<<"Case #"<<number_of_total_test_cases<<": ";
+    // Normal
+    solve();
+    }
+
+}
