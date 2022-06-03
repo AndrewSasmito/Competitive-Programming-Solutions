@@ -1,6 +1,6 @@
 #This took way too long to solve (adhoc skills need to be improved!)
 
-#You need problem solving in order to be a good competitive programmer
+#You need good problem solving skills in order to be a good competitive programmer
 n = int(input())
 cur = 1
 ans = 2
