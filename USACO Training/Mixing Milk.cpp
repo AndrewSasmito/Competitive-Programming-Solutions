@@ -1,9 +1,3 @@
-/*
-ID: asasmit1
-LANG: C++
-TASK: milk
-*/
-
 #include <bits/stdc++.h>
 using namespace std;
 //runtime
