@@ -1,9 +1,3 @@
-/*
-ID: asasmit1
-TASK: wormhole
-LANG: C++
-*/
-
 #include <bits/stdc++.h>
 using namespace std;
 //runtime
