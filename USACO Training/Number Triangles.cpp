@@ -32,42 +32,56 @@ void usaco(){
 	freopen("numtri.out", "w", stdout);
 }
 
-int mx = 0, n, x;
+int mx = 0, n, x, cnt = 0;
 vector <int> v[1001];
 int dp[1001][1001];
-void dfs(int i, int pos, int num){
-	if (dp[i][pos] >= num){
-		return;
-	}
-	dp[i][pos] = num;
-	if (i == n - 1){
-		mx = max(mx, num + v[i][pos]);
-		mx = max(mx, num + v[i][pos + 1]);
-		return;
-	}
-
-	dfs(i + 1, pos, num + v[i][pos]);
-	dfs(i + 1, pos + 1, num + v[i][pos + 1]);
-}
-
 void solve(){
 	usaco();
 	cin >> n;
-
+	cnt = 0;
 	for (int i = 0; i<n; ++i){
 
 		for (int j = 0; j<i + 1; ++j){
 			cin >> x;
+			cnt += x;
 			v[i].push_back(x);
 		}
 	}
-	if (n == 1){
-		cout << v[0][0] << '\n';
+	if (cnt == 0){
+		cout << 0 << '\n';
+		return;
+	}else if (cnt == 1){
+		cout << 1 << '\n';
 		return;
 	}
-	dfs (1, 0, v[0][0]);
 
-	cout << mx << '\n';
+
+	queue <pair<int, int>> q;
+
+	q.push({0, 0});
+
+	while (q.size()){
+		int i = q.front().first;
+		int pos = q.front().second;
+		q.pop();
+
+		if (i == n - 1){
+			mx = max(mx, dp[i][pos]);
+			continue;
+		}
+
+		if (dp[i][pos] + v[i + 1][pos] > dp[i+1][pos]){
+			dp[i+1][pos] = dp[i][pos] + v[i + 1][pos];
+			q.push({i + 1, pos});
+		}
+
+		if (dp[i][pos] + v[i + 1][pos + 1] > dp[i+1][pos+1]){
+			dp[i+1][pos + 1] = dp[i][pos] + v[i + 1][pos + 1];
+			q.push({i + 1, pos + 1});
+
+		}
+	}
+	cout << mx + v[0][0] << '\n';
 }
 
 //do not submit if usaco(); is open
