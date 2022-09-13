@@ -6,19 +6,18 @@ ll x;
 vector <ll> v;
 int main(){
     ios::sync_with_stdio(0), cin.tie(0);
-
+ 
     freopen("angry.in", "r", stdin);
     freopen("angry.out", "w", stdout);
-
-
+ 
     cin >> n;
-
+ 
     for (int i = 0; i<n; ++i){
         cin >> x;
         v.push_back(x);
     }
     sort(v.begin(), v.end());
-
+ 
     for (int i = 0; i<n; ++i){
         cur = 0;
         tot = 0;
@@ -29,6 +28,11 @@ int main(){
             if (v[j] <= last + x){
                 ++tot;
                 cx = v[j];
+				if (v[j] == last + x){
+					++x;
+					last = v[j];
+					cx = v[j];
+				}
             }else if (v[j] <= cx + x + 1 && cx != last){
                 ++x;
                 ++tot;
@@ -38,7 +42,7 @@ int main(){
                 break;
             }
         }
-        
+ 
         cur += tot;
         tot = 0;
         last = v[i];
@@ -48,6 +52,11 @@ int main(){
             if (v[j] >= last - x){
                 ++tot;
                 cx = v[j];
+				if (v[j] == last - x){
+					++x;
+					last = v[j];
+					cx = v[j];
+				}
             }else if (v[j] >= cx - x - 1 && cx != last){
                 ++x;
                 ++tot;
@@ -57,7 +66,7 @@ int main(){
                 break;
             }
         }
-
+ 
         cur += tot;
         ans = max(ans, cur);
     }
