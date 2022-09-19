@@ -1,26 +1,30 @@
-#include <vector>
-#include <iostream>
-#include <algorithm>
-#define ll long long
+#include <bits/stdc++.h>
 using namespace std;
 
-vector <ll> v;
+long long n[3], dis = 1000, cur = 0;
 int main(){
 
     freopen("herding.in", "r", stdin);
     freopen("herding.out", "w", stdout);
 
-    for (int i = 0, x; i < 3; ++i){
-        cin >> x;
-        v.push_back(x);
+    for (int i = 0; i<3; ++i){
+        cin >> n[i];
     }
-    sort(v.begin(), v.end());
+    sort(n, n + 3);
 
-    if (v[1] - v[0] == 1 && v[2] - v[1] == 1){
+    if (n[2] - n[1] == 1 && n[1] - n[0] == 1){
         cout << 0 << '\n' << 0 << '\n';
-    }else if (v[1] - v[0] <= 2 || v[2] - v[1] <= 2){
-        cout << 1 << '\n' << 2 << '\n';
+        return 0;
+    }
+
+    for (int i = 0; i < 2; ++i){
+        dis = min(dis, n[i + 1] - n[i]);
+        cur = max(cur, n[i + 1] - n[i]);
+    }
+    //cout << dis << '\n';
+    if (dis == 2){
+        cout << 1 << '\n' << cur - 1 << '\n';
     }else{
-        cout << 2 << '\n' << 2 << '\n';
+        cout << 2 << '\n' << cur - 1 << '\n';
     }
 }
