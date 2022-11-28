@@ -56,6 +56,10 @@ void usaco(){
 ll l = 0, o = 0, v = 0, e = 0;
 string s;
 void solve(){
+	/*
+		If I can meet you again, against the 6 billion to 1 odds, even if you can't move, I'll marry you.
+		- Hideki Hinata, Angel Beats
+	*/
 	cin >> s;
 
 	for (int i = s.size() - 1; i>=0; --i){
