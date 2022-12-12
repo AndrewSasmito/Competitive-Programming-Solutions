@@ -59,6 +59,7 @@ void usaco(){
 int n, x, ans = 1, cur = -1;
 vector <pair<int, int>> v;
 void solve(){
+	//Theres a simpler hashmap solution
 	cin >> n;
 
 	for (int i = 0; i<n; ++i){
