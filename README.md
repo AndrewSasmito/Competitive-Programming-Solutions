@@ -20,3 +20,6 @@ Yet Another Contest 6, Purple, Dec 27 2022
 ### Codeforces:
 
 Codeforces Global Round 19, Grey, Feb 12 2022
+
+### USACO:
+USACO 2022 December Contest, Bronze passed
