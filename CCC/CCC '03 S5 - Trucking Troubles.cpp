@@ -33,10 +33,12 @@ void solve(){
 		cin >> x;
 		destination.push_back(x);
 	}
+	destination.push_back(1);
 	while (q.size()){
 		x = q.top().second.first;
 		y = q.top().second.second;
 		z = q.top().first;
+		//cout << x << ' ' << y << ' ' << z << '\n';
 		q.pop();
 		firster = parent(x);
 		seconder = parent(y);
@@ -66,7 +68,7 @@ void solve(){
 
 
 int main(){
-    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+    //ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
 
     int testcases = 1;
     //cin >> testcases;
